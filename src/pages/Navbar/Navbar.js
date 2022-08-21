@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -14,7 +15,7 @@ const Navbar = () => {
                         <button class="btn">Register</button>
                     </ul>
                 </div>
-                <a class="btn btn-ghost normal-case text-xl text-white px-12">daisyUI</a>
+                <Link to="/" className="btn btn-ghost normal-case text-xl text-white px-12">Home</Link>
             </div>
             <div class="navbar-center hidden lg:flex ms-[100px]">
                 <ul class="menu menu-horizontal p-0 text-white">
