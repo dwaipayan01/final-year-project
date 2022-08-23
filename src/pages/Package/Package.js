@@ -1,7 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import picture from '../../images/5.jpg';
 
 const Package = () => {
+    const navigate = useNavigate();
+    const handleOffers = () => {
+        navigate("/offer");
+    }
     return (
         <div>
             <div className="mt-[150px] lg:ml-[90px] ml-[20px]">
@@ -17,7 +22,7 @@ const Package = () => {
                                 <div className='px-5'>
                                     <h1 class="text-1xl font-bold">Save 15% or more</h1>
                                     <p>Plan your dream trip with a Getaway Deal</p>
-                                    <button class="btn btn-primary mt-5">Explore deals</button>
+                                    <button onClick={handleOffers} class="btn btn-primary mt-5">Explore deals</button>
                                 </div>
                             </div>
                         </div>
