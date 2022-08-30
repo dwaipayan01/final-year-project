@@ -4,15 +4,20 @@ import { useState } from 'react';
 import Header from '../Navbar/Header';
 import Footer from '../Footer/Footer';
 import { BiTimeFive } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
 
 
 const Offer = () => {
+    const navigate = useNavigate();
     const [offers, setOffers] = useState([]);
     useEffect(() => {
         fetch("http://localhost:5000/package")
             .then(res => res.json())
             .then(data => setOffers(data));
     }, [])
+    const handleClick = (id) => {
+        navigate(`/offerDetail/${id}`)
+    }
 
     return (
         <div>
@@ -21,7 +26,7 @@ const Offer = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-5 ml-[50px] mr-[50px] mb-[50px]">
                 {
                     offers.map(offer => <div key={offer._id}>
-                        <div class="card lg:w-lg bg-base-100 shadow-xl cursor-pointer">
+                        <div onClick={() => handleClick(offer._id)} class="card lg:w-lg bg-base-100 shadow-xl cursor-pointer">
                             <figure><img className='transform transition-all hover:scale-125' src={offer.picture} alt="Shoes" /></figure>
                             <div class="card-body">
                                 <h2 class="card-title text-2xl">{offer.name}</h2>
