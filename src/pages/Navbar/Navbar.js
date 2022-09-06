@@ -1,10 +1,17 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import auth from '../../firebase.init';
 
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const [user, loading, error] = useAuthState(auth);
+    const handleSignout=()=>{
+        signOut(auth);
+    } 
     return (
         <div style={{ backgroundColor: "#003580" }} class="navbar h-16 ">
             <div class="navbar-start px-12">
@@ -20,15 +27,22 @@ const Navbar = () => {
                 <Link to="/" className="btn btn-ghost normal-case text-xl text-white px-12">Home</Link>
             </div>
             <div class="navbar-center hidden lg:flex ms-[100px]">
-                <ul class="menu menu-horizontal p-0 text-white">
+                {user ? <ul>
+                        <button class="btn bg-white text-black ml-5 mr-5">Contact us</button>
+                        <button onClick={handleSignout} class="btn bg-white text-black ml-5 mr-5">Sign Out</button>
+                    </ul>
+                    :
+                    <ul class="menu menu-horizontal p-0 text-white">
                     <button class="btn bg-white text-black ml-5 mr-5">Contact us</button>
-                    <button onClick={() => {
+                     <button onClick={() => {
                         navigate("/login")
                     }} class="btn bg-white text-black mr-5">Login</button>
                     <button onClick={() => {
                         navigate("/signup")
                     }} class="btn bg-white text-black">Register</button>
-                </ul>
+                
+                
+                </ul>}
             </div>
 
         </div>

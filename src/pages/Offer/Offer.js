@@ -11,7 +11,7 @@ const Offer = () => {
     const navigate = useNavigate();
     const [offers, setOffers] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/package")
+        fetch("http://localhost:5000/product")
             .then(res => res.json())
             .then(data => setOffers(data));
     }, [])
