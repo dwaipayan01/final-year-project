@@ -13,9 +13,12 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 
 const Header = ({ type }) => {
+    const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
     const [openDate, setOpenDate] = useState(false);
     const [destination, setDestination] = useState("");
@@ -56,7 +59,7 @@ const Header = ({ type }) => {
                 <><div className='mt-[60px] ml-[90px]'>
                     <h1 className="text-white text-5xl  font-bold">Find your next stay</h1>
                     <p className='text-white text-2xl mt-2'>Search low prices on hotels, homes and much more...</p>
-                    <button class="btn btn-primary mt-5 mb-[80px]">Register</button>
+                    {!user && <button onClick={()=>navigate("/signup")} class="btn btn-primary mt-5 mb-[80px]">Register</button>}
 
                     <div className="headerSearch">
                         <div className="headerSerachItem">

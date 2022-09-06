@@ -9,6 +9,7 @@ import Offer from './pages/Offer/Offer';
 import PackageDetail from './pages/Package/PackageDetail';
 import Login from './pages/Login/Login';
 import SignUp from './pages/Login/SignUp';
+import RequiredAuth from './pages/Login/RequiredAuth';
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/hotel" element={<Hotel></Hotel>}></Route>
-        <Route path="/offer" element={<Offer></Offer>}></Route>
+        <Route path="/offer" element={<RequiredAuth>
+          <Offer></Offer>
+        </RequiredAuth>}></Route>
         <Route path="/offerDetail/:id" element={<PackageDetail></PackageDetail>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>

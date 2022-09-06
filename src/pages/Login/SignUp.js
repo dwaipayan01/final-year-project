@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Header from '../Navbar/Header';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import Loading from './Loading';
+import SocialLogin from './SocialLogin';
 
 const SignUp = () => {
     const [error, setError] = useState("");
@@ -15,6 +17,9 @@ const SignUp = () => {
       ] = useCreateUserWithEmailAndPassword(auth);
       if(user){
         navigate("/home");
+      }
+      if(loading){
+        return <Loading></Loading>
       }
     const handleSubmit=event=>{
         event.preventDefault();
@@ -67,6 +72,7 @@ const SignUp = () => {
                         <button class="btn btn-active btn-primary mt-5">Sign Up</button>
                         </form>
                         <p>Already have an account? <Link className='text-primary' to="/login">Login</Link></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
