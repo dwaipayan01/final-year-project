@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Header from '../Navbar/Header';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import Loading from './Loading';
 import SocialLogin from './SocialLogin';
 
@@ -15,13 +15,14 @@ const SignUp = () => {
         loading,
         error1,
       ] = useCreateUserWithEmailAndPassword(auth);
+      const [updateProfile, updating, error2] = useUpdateProfile(auth);
       if(user){
         navigate("/home");
       }
       if(loading){
         return <Loading></Loading>
       }
-    const handleSubmit=event=>{
+    const handleSubmit=async (event)=>{
         event.preventDefault();
         const name=event.target.name.value;
         const email=event.target.email.value;
@@ -34,7 +35,8 @@ const SignUp = () => {
         if (password.length < 7) {
             setError("Password must be seven chareacter");
         }
-        createUserWithEmailAndPassword(email,password);
+        await createUserWithEmailAndPassword(email,password);
+        await updateProfile({ displayName:name });
     }
     return (
         <div>

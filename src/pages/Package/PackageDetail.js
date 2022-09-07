@@ -20,13 +20,13 @@ const PackageDetail = () => {
     return (
         <div>
             <Header type="list"></Header>
-            <div className='lg:flex grid grid-cols-1'>
-                <div className='flex items-center justify-between w-9/12'>
+            <div className='lg:flex grid grid-cols-1 '>
+                <div className='flex items-center justify-between w-9/12  ml-[30px] lg:ml-[20px]'>
                     <div>
-                        <h1 className="text-green-500 text-4xl font-bold lg:ml-[100px] mt-[50px]">{packages.name}</h1>
+                        <h1 className="text-green-500 text-4xl font-bold lg:ml-[100px]  mt-[50px]">{packages.name}</h1>
                         <p className='text-gray-400 lg:ml-[100px] flex items-center mt-[20px]'><GoLocation></GoLocation>{packages.location}</p>
                     </div>
-                    <div>
+                    <div className='ml-[50px]'>
                         <div class="rating">
                             <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
@@ -38,11 +38,11 @@ const PackageDetail = () => {
                     </div>
 
                 </div>
-                <div>
+                <div className="ml-[100px] lg:mr-[50px]">
                     <Booking></Booking>
                 </div>
             </div>
-            <div class="flex flex-col w-8/12 ml-[100px] lg:mt-[-40px]">
+            <div class="flex flex-col w-8/12 ml-[100px] lg:mt-[-100px]">
                 <div class="divider"></div>
             </div>
             <div className=' lg:ml-[100px] ml-[20px]'>

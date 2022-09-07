@@ -15,7 +15,7 @@ const PackagePicture = () => {
     const { id } = useParams();
     const [packages, setPackages] = useData(id);
     return (
-        <div className="w-8/12 lg:ml-[100px] ml-[50px]">
+        <div className="w-8/12 lg:ml-[100px] ml-[100px]">
             <Swiper
                 spaceBetween={30}
                 effect={"fade"}
