@@ -4,18 +4,26 @@ import useData from '../../hooks/useData';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import BookingModal from './BookingModal';
+import { useQuery } from 'react-query';
+import Loading from '../Login/Loading';
 
 
 const Booking = () => {
     const { id } = useParams();
-    const [packages, setPackages] = useData(id);
+    // const [packages, setPackages] = useData(id);
+    const {data:packages,setPackages,isLoading,refetch}=useQuery("available",()=>fetch(`http://localhost:5000/product/${id}`)
+    .then(res => res.json()))
     const [startDate, setStartDate] = useState(new Date());
+    if(isLoading){
+        return <Loading></Loading>
+    }
+    
     return (
         <div>
             <div style={{ backgroundColor: "#48bb78" }} class="card w-60  ml-[30px] mt-[30px] shadow-xl sticky top-0">
                 <div class="card-body ">
 
-                    <h2 class="card-title ml-5 text-white-500">Price:${packages.price}</h2>
+                    <h2 class="card-title ml-5 text-white-500">Price:${packages?.price}</h2>
 
                     <div className="divider"></div>
                     <div className="form-control w-full max-w-xs">
@@ -38,7 +46,7 @@ const Booking = () => {
                     </div>
                 </div>
             </div>
-            {packages && <BookingModal startDate={startDate} packages={packages}></BookingModal>}
+        {packages && <BookingModal setPackages={setPackages} refetch={refetch}  startDate={startDate} packages={packages}></BookingModal>}
         </div>
     );
 };

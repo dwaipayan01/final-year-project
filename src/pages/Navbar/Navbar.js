@@ -28,21 +28,28 @@ const Navbar = () => {
             </div>
             <div class="navbar-center hidden lg:flex ms-[100px]">
                 {user ? <ul>
-                        <button class="btn bg-white text-black ml-5 mr-5">Contact us</button>
+                        <button class="btn bg-white text-black ml-[500px] mr-5">Contact us</button>
                         <button onClick={handleSignout} class="btn bg-white text-black ml-5 mr-5">Sign Out</button>
+                        <button onClick={()=>navigate("/dashboard")} class="btn bg-white text-black ml-5 mr-5">Dashboard</button>
                     </ul>
                     :
                     <ul class="menu menu-horizontal p-0 text-white">
-                    <button class="btn bg-white text-black ml-5 mr-5">Contact us</button>
+                    <button class="btn bg-white text-black ml-[500px] mr-5">Contact us</button>
                      <button onClick={() => {
                         navigate("/login")
                     }} class="btn bg-white text-black mr-5">Login</button>
                     <button onClick={() => {
                         navigate("/signup")
                     }} class="btn bg-white text-black">Register</button>
-                
+                    
                 
                 </ul>}
+            </div>
+            <div className="navbar-end">
+            <label tabindex="1" htmlFor="my-drawer-2" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
+           
             </div>
 
         </div>

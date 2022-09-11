@@ -1,20 +1,42 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
+import { format } from 'date-fns';
 
-const BookingModal = ({packages,startDate}) => {
+const BookingModal = ({packages,startDate,setPackages,refetch}) => {
     const [user, loading, error] = useAuthState(auth);
     const handleBooking=(event)=>{
         event.preventDefault();
-        const data={
+        const booking={
             date:event.target.date.value,
             name:event.target.name.value,
             email:event.target.email.value,
             phoneNumber:event.target.phoneNumber.value,
-            address:event.target.address.value
-
+            address:event.target.address.value,
+            package:packages.name
         }
-        console.log(data);
+        fetch('http://localhost:5000/booking', {
+        method: 'POST',
+        body: JSON.stringify(booking),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((data) => {
+    if(data.success){
+        toast.success(`Your booking on ${packages.name} is confirm at ${startDate}`);
+    }
+    else{
+        toast.error(`You can not book more than one booking in a day`);
+    }
+    refetch();
+    setPackages(null);
+    console.log(data)
+
+});
+        
     }
     return (
         <div>
@@ -25,7 +47,7 @@ const BookingModal = ({packages,startDate}) => {
              <h3 className="font-bold text-lg font-bold text-green-500">Booking for: {packages.name}</h3>
              <form onSubmit={handleBooking}>
                 <div className="text-center">
-                <input type="text" name="date" value={startDate} disabled className="input w-full max-w-xs border rounded border-red-500 mt-5" />
+                <input type="text" name="date" value={format(startDate, 'PP')} disabled className="input w-full max-w-xs border rounded border-red-500 mt-5" />
              <input type="text" name="name" value={user?.displayName} disabled className="input w-full max-w-xs border rounded border-red-500 mt-5" />
              <input type="text" name="email" value={user?.email} disabled className="input w-full max-w-xs border rounded border-red-500 mt-5" />
              <input type="number" name="phoneNumber" placeholder="Type phone number" className="input w-full max-w-xs border rounded border-red-500 mt-5" />
