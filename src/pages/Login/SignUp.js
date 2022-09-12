@@ -5,6 +5,7 @@ import Header from '../Navbar/Header';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import Loading from './Loading';
 import SocialLogin from './SocialLogin';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const [error, setError] = useState("");
@@ -16,7 +17,8 @@ const SignUp = () => {
         error1,
       ] = useCreateUserWithEmailAndPassword(auth);
       const [updateProfile, updating, error2] = useUpdateProfile(auth);
-      if(user){
+      const [token]=useToken(user);
+      if(token){
         navigate("/home");
       }
       if(loading){

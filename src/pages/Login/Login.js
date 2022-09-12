@@ -6,6 +6,7 @@ import Header from '../Navbar/Header';
 import { ToastContainer, toast } from 'react-toastify';
 import SocialLogin from './SocialLogin';
 import Loading from './Loading';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(
@@ -21,7 +22,8 @@ const Login = () => {
         error,
       ] = useSignInWithEmailAndPassword(auth);
       const [email, setEmail] = useState('');
-      if(user){
+      const [token]=useToken(user);
+      if(token){
         navigate(from, { replace: true });
       }
     const handleLogin=event=>{

@@ -11,6 +11,7 @@ const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
     const handleSignout=()=>{
         signOut(auth);
+        localStorage.removeItem("accessToken");
     } 
     return (
         <div style={{ backgroundColor: "#003580" }} class="navbar h-16 ">
