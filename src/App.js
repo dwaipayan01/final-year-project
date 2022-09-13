@@ -13,6 +13,8 @@ import RequiredAuth from './pages/Login/RequiredAuth';
 import Dashboard from './pages/Dashboard/Dashboard';
 import MyPackages from './pages/Dashboard/MyPackages';
 import MyHotel from './pages/Dashboard/MyHotel';
+import AllUser from './pages/Dashboard/AllUser';
+import AdminRequireAuth from './pages/Login/AdminRequireAuth';
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
         </RequiredAuth>}>
           <Route index element={<MyPackages></MyPackages>}></Route>
           <Route path="hotels" element={<MyHotel></MyHotel>}></Route>
+          <Route path="users" element={<AdminRequireAuth><AllUser></AllUser></AdminRequireAuth>}></Route>
         </Route>
         <Route path="/offerDetail/:id" element={<PackageDetail></PackageDetail>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
