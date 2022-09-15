@@ -23,9 +23,10 @@ const AllUser = () => {
     <thead>
       <tr>
         <th></th>
+        <th>Name</th>
         <th>Email</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Role</th>
+        <th>Delete user</th>
       </tr>
     </thead>
     <tbody>

@@ -50,8 +50,8 @@ const BookingModal = ({packages,startDate,setPackages,refetch}) => {
                 <input type="text" name="date" value={format(startDate, 'PP')} disabled className="input w-full max-w-xs border rounded border-red-500 mt-5" />
              <input type="text" name="name" value={user?.displayName} disabled className="input w-full max-w-xs border rounded border-red-500 mt-5" />
              <input type="text" name="email" value={user?.email} disabled className="input w-full max-w-xs border rounded border-red-500 mt-5" />
-             <input type="number" name="phoneNumber" placeholder="Type phone number" className="input w-full max-w-xs border rounded border-red-500 mt-5" />
-             <input type="text" name="address" placeholder="Type address" className="input w-full max-w-xs border rounded border-red-500 mt-5" />
+             <input type="number" name="phoneNumber" placeholder="Type phone number" className="input w-full max-w-xs border rounded border-red-500 mt-5" required/>
+             <input type="text" name="address" placeholder="Type address" className="input w-full max-w-xs border rounded border-red-500 mt-5" required/>
              <button className="btn btn-primary w-full max-w-xs mt-5">Submit</button>
                 </div>
              </form>
