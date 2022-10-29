@@ -14,7 +14,8 @@ const BookingModal = ({packages,startDate,setPackages,refetch}) => {
             email:event.target.email.value,
             phoneNumber:event.target.phoneNumber.value,
             address:event.target.address.value,
-            package:packages.name
+            package:packages.name,
+            price:packages.price
         }
         fetch('http://localhost:5000/booking', {
         method: 'POST',

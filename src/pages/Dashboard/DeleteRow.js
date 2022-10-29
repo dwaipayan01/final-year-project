@@ -1,7 +1,9 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
-const DeleteRow = ({product,index,refetch}) => {
-    const {name,picture,price}=product;
+const DeleteRow = ({product,index,refetch,setDeletePackage}) => {
+    const {name,picture,price,_id}=product;
+    
     return (
         <tr>
         <th>{index+1}</th>
@@ -12,7 +14,10 @@ const DeleteRow = ({product,index,refetch}) => {
 </div></td>
         <td>{name}</td>
         <td>${price}</td>
-        <td><button className="btn btn-xs">Delete</button></td>
+        <td>
+        <label onClick={()=>setDeletePackage(product)} htmlFor="my-modal-6" className="btn btn-xs">Delete</label>
+          
+          </td>
       </tr>
     );
 };

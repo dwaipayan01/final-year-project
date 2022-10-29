@@ -17,6 +17,7 @@ import AllUser from './pages/Dashboard/AllUser';
 import AdminRequireAuth from './pages/Login/AdminRequireAuth';
 import AddPackages from './pages/Dashboard/AddPackages';
 import DeletePackage from './pages/Dashboard/DeletePackage';
+import Payment from './pages/Dashboard/Payment';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         </RequiredAuth>}>
           <Route index element={<MyPackages></MyPackages>}></Route>
           <Route path="hotels" element={<MyHotel></MyHotel>}></Route>
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route path="users" element={<AdminRequireAuth><AllUser></AllUser></AdminRequireAuth>}></Route>
           <Route path="addPackage" element={<AdminRequireAuth><AddPackages></AddPackages></AdminRequireAuth>}></Route>
           <Route path="deletePackage" element={<AdminRequireAuth><DeletePackage></DeletePackage></AdminRequireAuth>}></Route>

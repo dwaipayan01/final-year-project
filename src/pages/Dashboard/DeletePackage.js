@@ -1,9 +1,12 @@
 import React from 'react';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Login/Loading';
+import DeleteModal from './DeleteModal';
 import DeleteRow from './DeleteRow';
 
 const DeletePackage = () => {
+  const [deletePackage,setDeletePackage]=useState(null);
     const {data:packages,isLoading,refetch}=useQuery('package',()=>fetch("http://localhost:5000/product").then(res=>res.json()))
     if(isLoading){
         return <Loading></Loading>
@@ -26,7 +29,7 @@ const DeletePackage = () => {
     <tbody>
       
       {
-        packages.map((product,index)=><DeleteRow product={product} refetch={refetch} key={product._id} index={index}>
+        packages.map((product,index)=><DeleteRow product={product} refetch={refetch} key={product._id} index={index} setDeletePackage={setDeletePackage}>
 
         </DeleteRow>)
           
@@ -34,6 +37,7 @@ const DeletePackage = () => {
     </tbody>
   </table>
 </div>
+     {deletePackage && <DeleteModal deletePackage={deletePackage} refetch={refetch} setDeletePackage={setDeletePackage}></DeleteModal>}
         </div>
     );
 };
