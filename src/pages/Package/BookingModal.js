@@ -14,7 +14,7 @@ const BookingModal = ({packages,startDate,setPackages,refetch}) => {
             email:event.target.email.value,
             phoneNumber:event.target.phoneNumber.value,
             address:event.target.address.value,
-            package:packages.name,
+            tourName:packages.name,
             price:packages.price
         }
         fetch('http://localhost:5000/booking', {
@@ -27,7 +27,7 @@ const BookingModal = ({packages,startDate,setPackages,refetch}) => {
   .then((response) => response.json())
   .then((data) => {
     if(data.success){
-        toast.success(`Your booking on ${packages.name} is confirm at ${startDate}`);
+        toast.success(`Your booking on ${packages.name} is taken at ${startDate}.Please confirm your booking by paying.`);
     }
     else{
         toast.error(`You can not book more than one booking in a day`);

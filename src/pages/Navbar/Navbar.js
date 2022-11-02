@@ -23,6 +23,7 @@ const Navbar = () => {
                     <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <button class="btn mb-5">Login</button>
                         <button class="btn">Register</button>
+                        
                     </ul>
                 </div>
                 <Link to="/" className="btn btn-ghost normal-case text-xl text-white px-12">Home</Link>
@@ -32,6 +33,7 @@ const Navbar = () => {
                         <button class="btn bg-white text-black ml-[500px] mr-5">Contact us</button>
                         <button onClick={handleSignout} class="btn bg-white text-black ml-5 mr-5">Sign Out</button>
                         <button onClick={()=>navigate("/dashboard")} class="btn bg-white text-black ml-5 mr-5">Dashboard</button>
+                        <button className="btn bg-white text-black ml-5" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">Theme</button>
                     </ul>
                     :
                     <ul class="menu menu-horizontal p-0 text-white">
@@ -42,6 +44,7 @@ const Navbar = () => {
                     <button onClick={() => {
                         navigate("/signup")
                     }} class="btn bg-white text-black">Register</button>
+                    <button className="btn bg-white text-black" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">Theme</button>
                     
                 
                 </ul>}
