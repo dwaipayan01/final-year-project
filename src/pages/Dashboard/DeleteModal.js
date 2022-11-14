@@ -27,7 +27,6 @@ const DeleteModal = ({deletePackage,refetch,setDeletePackage}) => {
 <div className="modal modal-bottom sm:modal-middle">
   <div className="modal-box">
     <h3 className="font-bold text-lg text-red-500">Are you sure you want to delete : {name}</h3>
-    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
     <div className="modal-action">
     <button onClick={handleDelete} className="btn btn-xs">Delete</button>
       <label htmlFor="my-modal-6" className="btn btn-xs">Cancel</label>

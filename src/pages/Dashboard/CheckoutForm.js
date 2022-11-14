@@ -2,8 +2,10 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({appointment}) => {
+  const navigate=useNavigate();
   const {tourName,price,name,email,_id,date}=appointment;
     const stripe = useStripe();
     const elements = useElements();
@@ -110,7 +112,7 @@ const CheckoutForm = ({appointment}) => {
           },
         }}
       />
-      <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe || !clientSecret}>
+      <button  className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe || !clientSecret}>
         Pay
       </button>
     </form>
@@ -121,7 +123,7 @@ const CheckoutForm = ({appointment}) => {
         success && <div className='text-green-500'>
 
           <p>{success}</p>
-          <p>Your Transction id is: <span className='text-red-500 font-bold'>{transictionId}</span></p>
+          <p>Your Transaction id is: <span className='text-red-500 font-bold'>{transictionId}</span></p>
         </div>
     }
         </>

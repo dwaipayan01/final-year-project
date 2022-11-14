@@ -18,6 +18,7 @@ import AdminRequireAuth from './pages/Login/AdminRequireAuth';
 import AddPackages from './pages/Dashboard/AddPackages';
 import DeletePackage from './pages/Dashboard/DeletePackage';
 import Payment from './pages/Dashboard/Payment';
+import Footer from './pages/Footer/Footer';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
 
       </Routes>
       <ToastContainer />
+      
     </div>
   );
 }

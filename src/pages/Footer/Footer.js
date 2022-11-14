@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <footer class=" p-10 bg-neutral text-neutral-content">
+            <footer style={{ backgroundColor: "#00209A" }} class=" p-10 bg-neutral text-neutral-content">
                 <div className='footer'>
                     <div>
                         <span class="footer-title">Services</span>

@@ -10,12 +10,13 @@ import { EffectFade, Navigation, Pagination } from "swiper";
 import useData from '../../hooks/useData';
 import { useParams } from 'react-router-dom';
 
+
 const PackagePicture = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const { id } = useParams();
     const [packages, setPackages] = useData(id);
     return (
-        <div className="w-8/12 lg:ml-[100px] ml-[100px]">
+        <div className="w-8/12 lg:ml-[100px] ml-[100px] mb-[30px]">
             <Swiper
                 spaceBetween={30}
                 effect={"fade"}
@@ -46,7 +47,7 @@ const PackagePicture = () => {
                 </SwiperSlide>
 
             </Swiper>
-            <button>see details</button>
+            
         </div>
     );
 };

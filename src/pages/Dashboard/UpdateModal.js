@@ -1,9 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
 
-const AddPackages = () => {
-    
+const UpdateModal = ({updatePackage}) => {
+    const {name,price}=updatePackage;
     const { register, formState: { errors }, handleSubmit ,reset} = useForm();
     const imageStorageKey="d910a3fa5828979c28099e2024047808";
     const onSubmit = async data => {
@@ -19,7 +18,7 @@ const AddPackages = () => {
         .then(result=>{
             if(result.success){
                 const picture=result.data.url;
-            const info={
+            const information={
                 picture:picture,
                 name:data.name,
                 price:data.price,
@@ -30,36 +29,16 @@ const AddPackages = () => {
 
 
             }
-            fetch("http://localhost:5000/data",{
-                method:"POST",
-                headers:{
-                    authorization:`Bearer ${localStorage.getItem("accessToken")}`,
-                    "content-type":"application/json"
-                },
-                body:JSON.stringify(info)
-            })
-            .then(res=>res.json())
-            .then(data=>{
-                if(data.acknowledged===true){
-                    toast.success("Successfully added a packages");
-                }
-                
-                console.log(data);
-            })
             }
-            console.log(result);
         })
-        reset();
-
-        
-
     }
-    return (     
-            <div className="flex h-screen justify-center">
-            <div className="card w-96 bg-base-100 shadow-xl">
-                <div className="card-body">
-                    <h2 className="text-center text-2xl font-bold">Add a package</h2>
-                    <form onSubmit={handleSubmit(onSubmit)}>
+    return (
+        <div>
+            <input type="checkbox" id="booking-modal-one" className="modal-toggle" />
+             <div className="modal modal-bottom sm:modal-middle">
+             <div className="modal-box">
+             <label htmlFor="booking-modal-one" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+             <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text font-bold">Picture</span>
@@ -83,6 +62,7 @@ const AddPackages = () => {
                             </label>
                             <input
                                 type="text" placeholder="Type Name"
+                                defaultValue={name}
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("name", {
                                     required: {
@@ -106,6 +86,7 @@ const AddPackages = () => {
                             </label>
                             <input
                                 type="number" placeholder="Type price"
+                                defaultValue={price}
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("price", {
                                     
@@ -167,10 +148,10 @@ const AddPackages = () => {
                      
                         <input className="btn w-full max-w-xs mt-5 mb-5" type="submit" />
                     </form>
-                </div>
-            </div>
+             </div>
+           </div>
         </div>
     );
 };
 
-export default AddPackages;
+export default UpdateModal;

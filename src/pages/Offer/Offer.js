@@ -21,8 +21,8 @@ const Offer = () => {
 
     return (
         <div>
-            <Header></Header>
-            <h1 className='text-primary text-center text-5xl font-bold mt-[100px]'>Best: Experiences</h1>
+            
+            <h1 className=' text-center text-2xl font-bold mt-[100px]'>Best: Experiences</h1>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-5 ml-[50px] mr-[50px] mb-[50px]">
                 {
                     offers.map(offer => <div key={offer._id}>

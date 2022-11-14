@@ -8,7 +8,7 @@ const Package = () => {
         navigate("/offer");
     }
     return (
-        <div>
+        <div className='mt-[-80px]'>
             <div className="mt-[150px] lg:ml-[90px] ml-[20px]">
                 <h1 className='text-2xl font-bold'>Offers</h1>
                 <p className="text-gray-400">Promotions, deals and special offers for you</p>
@@ -20,9 +20,9 @@ const Package = () => {
                             <div className="flex items-center ml-[60px]">
                                 <img src={picture} class="max-w-sm w-40 rounded-lg shadow-2xl" alt="" />
                                 <div className='px-5'>
-                                    <h1 class="text-1xl font-bold">Save 15% or more</h1>
+                                    <h1 class="text-1xl font-bold">Save  more</h1>
                                     <p>Plan your dream trip with a Getaway Deal</p>
-                                    <button onClick={handleOffers} class="btn btn-primary mt-5">Explore deals</button>
+                                    <button onClick={handleOffers} class="btn btn-primary mt-5">Explore Packages</button>
                                 </div>
                             </div>
                         </div>

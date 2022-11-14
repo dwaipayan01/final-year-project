@@ -15,6 +15,7 @@ import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import background from "../../images/dip1.jpeg";
 
 
 const Header = ({ type }) => {
@@ -46,22 +47,18 @@ const Header = ({ type }) => {
         navigate("/hotel", { state: { destination, option, date } });
     }
     return (
-        <div style={{ backgroundColor: "#003580" }} className="header" >
-            <ul className={type === "list" ? "mb-5 menu menu-vertical lg:menu-horizontal text-white ml-[90px]" : "menu menu-vertical lg:menu-horizontal text-white ml-[90px] "}>
-                <li className='hover:border border-solid border-white rounded-3xl'><a><p className='text-2xl '><MdOutlineHotel></MdOutlineHotel></p>Hotels</a></li>
-                <li className='hover:border border-solid border-white rounded-3xl'><a><p className='text-2xl ml-5'><MdOutlineFlightLand></MdOutlineFlightLand></p>Flights</a></li>
-                <li className='hover:border border-solid border-white rounded-3xl'><a><p className='text-2xl ml-5'><AiFillCar></AiFillCar></p>Car rentals</a></li>
-                <li className='hover:border border-solid border-white rounded-3xl'><a><p className='text-2xl ml-5'><MdAttractions></MdAttractions></p>Attractions</a></li>
-                <li className='hover:border border-solid border-white rounded-3xl'><a><p className='text-2xl ml-5'><FaTaxi></FaTaxi></p>Airport taxis</a></li>
-            </ul>
+        <div>
+              <div   style={{ backgroundImage: `url(${background})` ,backgroundSize: 'cover',
+        overflow: 'hidden',}} className="header" >
+            
             {type !== "list" &&
 
-                <><div className='mt-[60px] ml-[90px]'>
+                <><div className=' ml-[90px] mt-[80px]'>
                     <h1 className="text-white text-5xl  font-bold">Find your next stay</h1>
-                    <p className='text-white text-2xl mt-2'>Search low prices on hotels, homes and much more...</p>
+                    <p className='text-white text-2xl mt-2'>Find low prices on Packages, homes and much more...</p>
                     {!user && <button onClick={()=>navigate("/signup")} class="btn btn-primary mt-5 mb-[80px]">Register</button>}
 
-                    <div className="headerSearch">
+                    {/* <div className="headerSearch">
                         <div className="headerSerachItem">
                             <p className='headerIcon'><BiBed></BiBed></p>
                             <input onChange={e => setDestination(e.target.value)} type="text" className="headerSearchInput" name="place" placeholder='type where are you going' id="" />
@@ -111,14 +108,18 @@ const Header = ({ type }) => {
                         </div>
                         <button onClick={handleSearch} className="headerBtn"> Search</button>
 
-                    </div>
+                    </div> */}
 
-                </div> </>}
+                </div> </>
+                
+                }
 
 
 
 
         </div >
+        </div>
+      
     );
 };
 

@@ -12,6 +12,7 @@ import Booking from './Booking';
 import App from './PackagePicture';
 import PackagePicture from './PackagePicture';
 import useData from '../../hooks/useData';
+import Footer from '../Footer/Footer';
 
 const PackageDetail = () => {
     const { id } = useParams();
@@ -19,7 +20,7 @@ const PackageDetail = () => {
 
     return (
         <div>
-            <Header type="list"></Header>
+            
             <div className='lg:flex grid grid-cols-1 '>
                 <div className='flex items-center justify-between w-9/12  ml-[30px] lg:ml-[20px]'>
                     <div>
@@ -94,6 +95,7 @@ const PackageDetail = () => {
                 </div>
             </div>
             <PackagePicture></PackagePicture>
+            <Footer></Footer>
         </div>
     );
 };

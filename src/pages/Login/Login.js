@@ -51,7 +51,7 @@ const Login = () => {
     }
     return (
         <div>
-            <Header type="list"></Header>
+            
             <div className="grid justify-center mt-[100px]">
                 <div class="card w-96 bg-base-100 shadow-xl ">
                     <h1 className="text-center text-2xl text-primary font-bold">Please Login</h1>

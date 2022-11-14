@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Header from '../Navbar/Header';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import Loading from './Loading';
 import SocialLogin from './SocialLogin';
 import useToken from '../../hooks/useToken';
@@ -17,6 +17,7 @@ const SignUp = () => {
         error1,
       ] = useCreateUserWithEmailAndPassword(auth);
       const [updateProfile, updating, error2] = useUpdateProfile(auth);
+      const [sendEmailVerification, sending, error3] = useSendEmailVerification(auth);
       const [token]=useToken(user);
       if(token){
         navigate("/home");
@@ -39,10 +40,11 @@ const SignUp = () => {
         }
         await createUserWithEmailAndPassword(email,password);
         await updateProfile({ displayName:name });
+        await sendEmailVerification();
     }
     return (
         <div>
-            <Header type="list"></Header>
+            
             <div className="grid justify-center mt-[100px]">
                 <div class="card w-96 bg-base-100 shadow-xl ">
                     <h1 className="text-center text-2xl text-primary font-bold">Please create an account</h1>

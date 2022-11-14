@@ -11,7 +11,7 @@ const Dashboard = () => {
         <div className="drawer drawer-mobile">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content text-center mt-5">
-    <h1 className="text-3xl text-primary font-bold mb-5">Dashboard</h1>
+    <h1 className="text-3xl  font-bold mb-5">Dashboard</h1>
       <Outlet></Outlet>
     
   
@@ -20,12 +20,12 @@ const Dashboard = () => {
     <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
     <ul className="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
       
-      <li><Link to="/dashboard">My Packages</Link></li>
-      <li><Link to="/dashboard/hotels">My hotels</Link></li>
+      {!admin && <><li><Link to="/dashboard">My Packages</Link></li>
+      <li><Link to="/dashboard/hotels">My hotels</Link></li></>}
       {admin && <>
         <li><Link to="/dashboard/users">All users</Link></li>
         <li><Link to="/dashboard/addPackage">Add Packages</Link></li>
-        <li><Link to="/dashboard/deletePackage">Delete Packages</Link></li>
+        <li><Link to="/dashboard/deletePackage">All Packages</Link></li>
       
       </>}
     </ul>
