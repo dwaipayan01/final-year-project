@@ -29,7 +29,7 @@ const Navbar = () => {
                 <Link to="/" className="btn btn-ghost normal-case text-3xl text-white px-12">Home</Link>
             </div>
             <div class="navbar-center hidden lg:flex ms-[100px]">
-                {user ? <ul className="ml-[500px]">
+                {user ? <ul className="ml-[700px]">
                         
                         <button onClick={handleSignout} class="btn bg-white text-black ml-5 mr-5">Sign Out</button>
                         <button onClick={()=>navigate("/dashboard")} class="btn bg-white text-black ml-5 mr-5">Dashboard</button>

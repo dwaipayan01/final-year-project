@@ -39,7 +39,7 @@ const DeletePackage = () => {
     </tbody>
   </table>
 </div>
-    {updatePackage && <UpdateModal updatePackage={updatePackage}></UpdateModal>}
+    {updatePackage && <UpdateModal updatePackage={updatePackage} refetch={refetch} setUpdatePackage={setUpdatePackage}></UpdateModal>}
      {deletePackage && <DeleteModal deletePackage={deletePackage} refetch={refetch} setDeletePackage={setDeletePackage}></DeleteModal>}
         </div>
     );

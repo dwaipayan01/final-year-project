@@ -19,6 +19,8 @@ import AddPackages from './pages/Dashboard/AddPackages';
 import DeletePackage from './pages/Dashboard/DeletePackage';
 import Payment from './pages/Dashboard/Payment';
 import Footer from './pages/Footer/Footer';
+import ProfileInformation from './pages/Dashboard/ProfileInformation';
+import ReviewSection from './pages/Dashboard/ReviewSection';
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
           <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route path="users" element={<AdminRequireAuth><AllUser></AllUser></AdminRequireAuth>}></Route>
           <Route path="addPackage" element={<AdminRequireAuth><AddPackages></AddPackages></AdminRequireAuth>}></Route>
+          <Route path="profile" element={<RequiredAuth><ProfileInformation></ProfileInformation></RequiredAuth>}></Route>
+          <Route path="review" element={<RequiredAuth><ReviewSection></ReviewSection></RequiredAuth>}></Route>
           <Route path="deletePackage" element={<AdminRequireAuth><DeletePackage></DeletePackage></AdminRequireAuth>}></Route>
         </Route>
         <Route path="/offerDetail/:id" element={<PackageDetail></PackageDetail>}></Route>

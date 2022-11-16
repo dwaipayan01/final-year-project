@@ -58,7 +58,7 @@ const MyPackages = () => {
                 <td>{(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className="btn btn-xs btn-success">Pay</button></Link>}
                 {(a.price && a.paid) && <div>
                   <p><span className="btn btn-success">Paid</span></p>
-                  <p>Transaction id:<span className="text-success">{a.transactionId}</span></p>
+                  <p>Transaction id: <span className="text-red-500">{a.transactionId}</span></p>
 
                   </div>}
                 </td>
