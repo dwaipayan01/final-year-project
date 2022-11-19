@@ -1,0 +1,8 @@
+.slide{
+  width: 400px;
+  height: 300px;
+}
+.slide img{
+    display: block;
+    width: 100%;
+  }

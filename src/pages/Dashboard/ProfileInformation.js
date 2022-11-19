@@ -67,7 +67,7 @@ const ProfileInformation = () => {
                             <label class="label">
                                 <span class="label-text  font-bold">Phone number</span>
                             </label>
-                            <input type="number" placeholder="Type Phone number"  name="number" class="input input-bordered w-64" required />
+                            <input type="text" placeholder="Type Phone number"  name="number" class="input input-bordered w-64" required />
                         </div>
                         <select name="gender" className="select select-bordered w-full mt-5 max-w-xs">
   <option disabled selected>gender</option>

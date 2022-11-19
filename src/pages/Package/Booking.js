@@ -10,10 +10,31 @@ import Loading from '../Login/Loading';
 
 const Booking = () => {
     const { id } = useParams();
+    const [error, setError] = useState("");
+    
     // const [packages, setPackages] = useData(id);
     const {data:packages,setPackages,isLoading,refetch}=useQuery("available",()=>fetch(`http://localhost:5000/product/${id}`)
+    
     .then(res => res.json()))
+    const [value,setValue]=useState(packages?.price);
     const [startDate, setStartDate] = useState(new Date());
+    const handleChange=(event)=>{
+        const peoples=event.target.value;
+        if(peoples.length<1 || peoples.length>12){
+            setError("You can not come more than 12 people");
+            return;
+        }
+            console.log(peoples);
+            const newPrice=parseFloat((packages.price/peoples).toFixed(2));
+            const newAmount=packages.price-newPrice;
+            setValue(newAmount);
+        
+            
+        
+        
+
+
+    }
     if(isLoading){
         return <Loading></Loading>
     }
@@ -23,7 +44,7 @@ const Booking = () => {
             <div style={{ backgroundColor: "#48bb78" }} class="card w-60  ml-[30px] mt-[30px] shadow-xl sticky top-0">
                 <div class="card-body ">
 
-                    <h2 class="card-title ml-5 text-white-500">Price:${packages?.price}</h2>
+                    <h2 class="card-title ml-5 text-white-500">Price:${value}</h2>
 
                     <div className="divider"></div>
                     <div className="form-control w-full max-w-xs">
@@ -36,8 +57,10 @@ const Booking = () => {
                         <label className="label">
                             <span className="label-text font-bold">Maximum People</span>
                         </label>
-                        <input type="number" disabled defaultValue="12" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+
+                        <input type="number"  name="people" onChange={handleChange}  defaultValue="12" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
                     </div>
+                    <p className="text-red-500">{error}</p>
                     <div class="card-actions justify-center">
                         <label htmlFor="booking-modal"
                         // onClick={()=>setPackages(packages)} 

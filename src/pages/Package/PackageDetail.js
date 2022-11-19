@@ -13,6 +13,7 @@ import App from './PackagePicture';
 import PackagePicture from './PackagePicture';
 import useData from '../../hooks/useData';
 import Footer from '../Footer/Footer';
+import HotelImage from './HotelImage';
 
 const PackageDetail = () => {
     const { id } = useParams();
@@ -95,6 +96,7 @@ const PackageDetail = () => {
                 </div>
             </div>
             <PackagePicture></PackagePicture>
+            <HotelImage></HotelImage>
             <Footer></Footer>
         </div>
     );

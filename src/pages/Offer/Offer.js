@@ -46,6 +46,7 @@ const Offer = () => {
 
                                     <div>
                                         <p className="text-green-400 font-bold text-3xl">${offer.price}</p>
+                                        <p className='text-green-400 font-bold text-1xl'>৳{offer.taka}</p>
                                     </div>
                                 </div>
                             </div>
